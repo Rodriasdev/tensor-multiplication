@@ -10,27 +10,37 @@
     <div id="resultado"></div>
 </body>
     <script>
-        // let tensor1 = tf.tensor2d([1,2,3,4,5,6,7,8,9], [10,10]);
-        let tensor1 = tf.tensor(tf.range(1, 101).reshape([10, 10]));
-        // const tensor2 = tf.tensor2d([[1,2,3,4,5,6,7,8,9,10],
-        //                             [1,2,3,4,5,6,7,8,9,10],
-        //                             [1,2,3,4,5,6,7,8,9,10],
-        //                             [1,2,3,4,5,6,7,8,9,10],
-        //                             [1,2,3,4,5,6,7,8,9,10],
-        //                             [1,2,3,4,5,6,7,8,9,10],
-        //                             [1,2,3,4,5,6,7,8,9,10],
-        //                             [1,2,3,4,5,6,7,8,9,10],
-        //                             [1,2,3,4,5,6,7,8,9,10],
-        //                             [1,2,3,4,5,6,7,8,9,10]]
-        //                             [10,10]);
-        document.getElementById('resultado').innerText = tensor1;
+    let matriz = [];
 
-  
-        const bytes = tf.memory().numBytes;
 
-        const kilobytes = bytes / 1024;
-        const megabytes = kilobytes / 1024;
+    for (let i = 0; i < 10; i++) {
 
-        console.log(tensor1)
+        let fila = [];
+        
+
+        for (let j = 1; j < 11; j++) {
+
+            fila.push(j);
+        }
+
+        matriz.push(fila);
+    }
+
+        let tensor1 = tf.tensor2d(matriz);
+        let tensor2 = tf.tensor2d(matriz);
+        let resultado = tf.tensor2d(matriz)
+        let megabytes = 0
+
+        while (megabytes < 64) {
+            resultado = tensor1.mul(tensor2); 
+            tensor1 = resultado;
+
+            const bytes = tf.memory().numBytes;
+            megabytes = bytes / (1024 * 1024);
+
+            document.getElementById('resultado').innerText = `Tamaño en megabytes: ${megabytes}`
+        }
+
     </script>
 </html>
+
