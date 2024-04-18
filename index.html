@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="resultado"></div>
+</body>
+    <script>
+        // let tensor1 = tf.tensor2d([1,2,3,4,5,6,7,8,9], [10,10]);
+        let tensor1 = tf.tensor(tf.range(1, 101).reshape([10, 10]));
+        // const tensor2 = tf.tensor2d([[1,2,3,4,5,6,7,8,9,10],
+        //                             [1,2,3,4,5,6,7,8,9,10],
+        //                             [1,2,3,4,5,6,7,8,9,10],
+        //                             [1,2,3,4,5,6,7,8,9,10],
+        //                             [1,2,3,4,5,6,7,8,9,10],
+        //                             [1,2,3,4,5,6,7,8,9,10],
+        //                             [1,2,3,4,5,6,7,8,9,10],
+        //                             [1,2,3,4,5,6,7,8,9,10],
+        //                             [1,2,3,4,5,6,7,8,9,10],
+        //                             [1,2,3,4,5,6,7,8,9,10]]
+        //                             [10,10]);
+        document.getElementById('resultado').innerText = tensor1;
+
+  
+        const bytes = tf.memory().numBytes;
+
+        const kilobytes = bytes / 1024;
+        const megabytes = kilobytes / 1024;
+
+        console.log(tensor1)
+    </script>
+</html>
